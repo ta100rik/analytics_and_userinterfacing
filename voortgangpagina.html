@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webleertaak</title>
+	<link rel="stylesheet" type="text/css" href="css/frame.css">
+	<style type="text/css">
+	.content{
+		padding-top: 10px;
+		margin-left: 30px;
+	}
+	.content h1{
+		margin-left: 1.5%;
+		font-size:40px;
+		font-weight: bold;
+	}
+	.voortgang_blok{
+		float:left;
+		width: 50%;
+		height: 10px;
+	}
+	table{
+		background-color: lightgreen;
+		border:solid black 3px;
+	}
+	td, th{
+		border:solid black 1px;
+	}
+	input{
+		 border: none;
+		 background-color: lightgreen;
+	}
+	.col-25 {
+	  float: left;
+	  width: 25%;
+	  margin-top: 6px;
+	}
+
+	.col-75 {
+	  float: left;
+	  width: 74%;
+	  margin-top: 6px;
+	}
+	.myButton {
+	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+	background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+	background-color:#768d87;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+	background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+	background-color:#6c7c7c;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.blok{
+	text-align: center;
+	width: 25%;
+	height: 25%;
+	position: absolute;
+	background-color: #9999FF;
+	top:37.5%;
+	left :37.5%;
+	z-index: 2;
+	border:solid black 4px;
+}
+.header{
+
+	background-color: white;
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	color:grey;
+	text-align: left;
+}
+.header span{
+	font-size: 15px;
+	font-weight: bold;
+	padding:20px;
+}
+p{
+padding-top: 20px;
+}
+.hide{
+	display:none;
+}
+</style>
+<script type="text/javascript">
+	function Bereken(){
+		var etcs = document.getElementsByClassName('etcs');
+		var datums = document.getElementsByClassName('datum');
+		var today = new Date();
+		// caculation total etcs
+		var total = 0;
+		for (var i = etcs.length - 1; i >= 0; i--) {
+			total = total + parseInt(etcs[i].value);
+		}
+		var oldestdate = new Date();
+		for (var i = datums.length - 1; i >= 0; i--) {
+			if( oldestdate > new Date(datums[i].value)){
+				oldestdate =   new Date(datums[i].value);
+			}
+		}
+		var dif_month = (today.getFullYear() - oldestdate.getFullYear())*12 + (today.getMonth() - oldestdate.getMonth());
+		console.log(total);
+		console.log(dif_month);
+		var studievoortgang = total / dif_month;
+		var aantalmaanden = (60 - total) / studievoortgang;
+		
+		document.getElementById('studiepunten').innerHTML  = total;
+		document.getElementById('tempo').innerHTML  = parseInt(studievoortgang);
+		document.getElementById('maandnodig').innerHTML  = aantalmaanden.toFixed(2);
+		var blok = document.getElementsByClassName('blok')[0];
+		blok.classList.remove('hide');
+	}
+	function hide(){
+		var blok = document.getElementsByClassName('blok');
+		blok[0].classList.add('hide');	
+	}
+</script>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="menu">
+				<a href="index.html"><li >Home</li></a>
+				<a href="profielpagina.html"><li>Profiel</li></a>
+				<a href="voortgangpagina.html" ><li class="active">Voortgang</li></a>
+			</ul>
+			<div class="right-box">
+				<div id="user-name">
+					Zyad
+				</div>
+				<div id="user-logo">
+					<img src="https://pngimage.net/wp-content/uploads/2018/06/logo-user-png-6.png"/>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="content">
+		<h1>Voortgang</h1>
+		<div class="voortgang_blok">
+			<table>
+				<thead>
+					<th>Vakcode</th>
+					<th>ECTS</th>
+					<th>Datum Behaald</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+					<tr>
+						<td><input type="text" class="names" value="ICT-V1PROG-15"></td>
+						<td><input type="number" class="etcs" value="0"/></td>
+						<td><input type="date" class="datum" ></td>
+					</tr>
+
+				</tbody>
+			</table>
+			<button class="myButton" onclick="Bereken()">Bereken studietempo</button>
+		</div>
+		<div class="voortgang_blok">
+			<div class="row">
+				<div class="col-25">Student:</div>
+				<div class="col-75">Zyad</div>
+			</div>
+			<div class="row">
+				<div class="col-25">Telefoon:</div>
+				<div class="col-75">06-12547668</div>
+			</div>
+			<div class="row">
+				<div class="col-25">Email:</div>
+				<div class="col-75">Zyad.Osseyran@student.hu.nl</div>
+			</div>
+			<div class="row">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2452.336038536804!2d5.12324041567935!3d52.07361237973217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c665fbedf383d7%3A0x91bd7cc9e437df4b!2sBarnsteenlaan+51%2C+3523+BC+Utrecht!5e0!3m2!1snl!2snl!4v1551873376262" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+			<div class="row">
+				<img src="https://i.stack.imgur.com/7CiRI.png" width="200px" height="200px">
+			</div>
+		</div>
+	</section>
+	<div class="blok hide">
+		<div class="header">
+			<span>Studietempo</span>
+		</div>
+		<p >
+			Je hebt tot nu toe <span id="studiepunten"></span> ECTS behaald.
+			<br>
+			<br>
+			Je huidige studietempo is:<br>
+			<span id="tempo"></span> ECTS / mnd.
+			<br>
+			Op basis van dit studietempo heb je <span id="maandnodig"></span> maanden nodig voor je P.
+			<center>
+				<button onclick="hide()">Ok</button>
+			</center>
+		</p>
+	</div>
+		<footer>
+		<center>
+			<h5>Deze opdracht is gemaakt in het kader van het vak Analyse & User Interfaces</h5>
+		</center>
+		<div class="footer-row">
+			<div class="foot-left">Auteur: Zyad Osseyran</div>
+			<div class="foot-mid"></div>
+			<div class="foot-right">Datum: 06/03/2019</div>
+		</div>
+	</footer>
+</body>
+</html>

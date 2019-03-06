@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webleertaak</title>
+	<link rel="stylesheet" type="text/css" href="css/frame.css">
+	<style type="text/css">
+	.form_blok1{
+		width: 44%;
+		float:left;
+		margin-right: 1.5%;
+		margin-left: 1.5%;
+	}
+	.content{
+		margin:30px; 
+	}
+	.content h1{
+		margin-left: 1.5%;
+		font-size:40px;
+		font-weight: bold;
+	}
+
+
+	.col-25 {
+	  float: left;
+	  width: 25%;
+	  margin-top: 6px;
+	}
+
+	.col-75 {
+	  float: left;
+	  width: 74%;
+	  margin-top: 6px;
+	}
+	.button {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="menu">
+				<a href="index.html"><li >Home</li></a>
+				<a href="profielpagina.html"><li class="active">Profiel</li></a>
+				<a href="voortgangpagina.html" ><li >Voortgang</li></a>
+			</ul>
+			<div class="right-box">
+				<div id="user-name">
+					Zyad
+				</div>
+				<div id="user-logo">
+					<img src="https://pngimage.net/wp-content/uploads/2018/06/logo-user-png-6.png"/>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="content">
+			<h1>Profiel</h1>
+			<div class="form_blok1">
+				<label class="col-25">Voornaam:</label>
+				<input class="col-75" type="text" name="Voornaam"><br>
+				<label class="col-25">Achternaam:</label>
+				<input class="col-75" type="text" name="Achternaam"><br>
+				<label class="col-25">Adres:</label>
+				<textarea class="col-75" name="adres"></textarea><br>
+				<label class="col-25">E-mail:</label>
+				<input class="col-75" type="text" name="E-mail"><br>
+				<label class="col-25">telefoonnr:</label>
+				<input class="col-75" type="text" name="telefoonnr"><br>
+				<label class="col-25">geslacht:</label>
+				<div class="col-75"> 
+					<input type="radio"  name="geslacht" value="Man"> <label for="Man">Man</label>
+					<input type="radio"  name="geslacht" value="Vrouw"> <label for="Vrouw">Vrouw</label><br>
+				</div>
+				<label class="col-25">Geboortedatum</label>
+				<input class="col-75" type="date" name="date">
+			</div>
+			<div class="form_blok1">
+				<label class="col-25">Studentnr:</label>
+				<input class="col-75" type="number" name="Studentnr"><br>
+
+				<label class="col-25">Klas:</label>	
+				<select class="col-75">
+					<option value="V1A">V1A</option>
+					<option value="V1B">V1B</option>
+					<option value="V1C">V1C</option>
+					<option value="V1D">V1D</option>
+					<option value="V1E">V1E</option>
+				</select><br>
+				<label class="col-25">Gekozen Studierichting:</label>
+				<div class="col-75">
+					<input type="radio"  name="richting" value="SNE"> <label for="SNE">SNE</label><br>
+					<input type="radio"  name="richting" value="BIM"> <label for="BIM">BIM</label><br>
+					<input type="radio"  name="richting" value="SIE" selected> <label for="SIE">SIE</label><br>
+					<input type="radio"  name="richting" value="TI"> <label for="TI">TI</label><br>
+				</div>
+				<label class="col-25">Foto:</label>
+				<div class="col-75">
+					<img  src="https://picsum.photos/300/200">
+				</div>
+				<div class="col-25">
+					
+				</div>
+				<div class="col-75"><button class="button"> Change</button></div>
+			</div>
+	</section>
+		<footer>
+		<center>
+			<h5>Deze opdracht is gemaakt in het kader van het vak Analyse & User Interfaces</h5>
+		</center>
+		<div class="footer-row">
+			<div class="foot-left">Auteur: Zyad Osseyran</div>
+			<div class="foot-mid"></div>
+			<div class="foot-right">Datum: 06/03/2019</div>
+		</div>
+	</footer>
+</body>
+</html>
